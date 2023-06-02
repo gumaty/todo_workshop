@@ -5,9 +5,13 @@ function TaskList({tasks}) {
 
     return (
         <>
-            <section className="card mt-5 shadow-sm">
 
-                {tasks.map((task) =>
+
+                {tasks
+                    .sort((a, b) => {
+                        return a.addedDate - b.addedDate;
+                    })
+                    .map((task) =>
                         (
                             <TaskItem key={task.id} task={task}/>
 
@@ -15,7 +19,7 @@ function TaskList({tasks}) {
                     )}
 
 
-            </section>
+
         </>
     );
 }

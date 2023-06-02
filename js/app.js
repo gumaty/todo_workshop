@@ -24,7 +24,6 @@ function App() {
         getTasks()
     }, [])
 
-    // console.log(tasks);
 
   return (
 
