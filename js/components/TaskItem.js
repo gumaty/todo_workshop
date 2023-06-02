@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {API_KEY, API_URL} from "../api/constants";
 import OperationItem from "./OperationItem";
+import AddOperation from "./AddOperation";
 
-function TaskItem({task}) {
+function TaskItem({task, setTasks}) {
 
     const [operations, setOperations] =useState([]);
-    const [isAddClicked, setIsAddClicked] =useState(false);
+    const [isAddOperationClicked, setIsAddOperationClicked] =useState(false);
 
 
     function deleteTaskAPI(id) {
@@ -40,14 +41,14 @@ function TaskItem({task}) {
     }, []);
 
     function changeFormVisibility(){
-        if (isAddClicked === false) {
-            setIsAddClicked(true);
+        if (isAddOperationClicked === false) {
+            setIsAddOperationClicked(true);
         } else {
-            setIsAddClicked(false);
+            setIsAddOperationClicked(false);
         }
     }
 
-    console.log(operations);
+    // console.log(operations);
 
     return (
         <>
@@ -76,22 +77,8 @@ function TaskItem({task}) {
                 </div>
             </div>
 
-                {isAddClicked === true && (
-                    <div className="card-body">
-                        <form>
-                            <div className="input-group">
-                                <input type="text"
-                                       className="form-control"
-                                       placeholder="Operation description"/>
-                                <div className="input-group-append">
-                                    <button className="btn btn-info">
-                                        Add
-                                        <i className="fas fa-plus-circle ml-1"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                {isAddOperationClicked === true && (
+                    <AddOperation task={task.id}/>
                 )}
 
             <ul className="list-group list-group-flush">

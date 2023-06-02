@@ -1,12 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {API_KEY, API_URL} from "../api/constants";
 
-function AddNewTask({tasks, setTasks}) {
-
+function NewTask({tasks, setTasks}) {
 
     const [values, setValues] = useState({title: "", description: "", status: "open"});
-
-
 
     function handleChange(event) {
         const value = event.target.value;
@@ -16,7 +13,6 @@ function AddNewTask({tasks, setTasks}) {
 
         });
     }
-
 
     const addNewTask = (data) => {
 
@@ -34,9 +30,13 @@ function AddNewTask({tasks, setTasks}) {
 
      function handleSubmit(event) {
         event.preventDefault();
+        // console.log(`Dane z handleSubmit ${values}`);
+        //  console.log(values);
         addNewTask(values);
-    }
 
+
+        // const product = await addNewTask(values);
+    }
 
     return (
         <>
@@ -71,4 +71,4 @@ function AddNewTask({tasks, setTasks}) {
     );
 }
 
-export default AddNewTask;
+export default NewTask;

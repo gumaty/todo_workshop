@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import { createRoot } from "react-dom/client";
 import AddNewTask from "./components/AddNewTask";
 import TaskList from "./components/TaskList";
-import {getTasks} from "./api/tasks";
 import {API_KEY, API_URL} from "./api/constants";
 
 function App() {
@@ -28,9 +27,9 @@ function App() {
   return (
 
       <>
-        <AddNewTask />
+        <AddNewTask tasks={tasks} setTasks={setTasks}/>
 
-        <TaskList tasks={tasks}/>
+        <TaskList tasks={tasks} setTasks={setTasks}/>
       </>
 
   );
